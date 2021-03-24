@@ -31,7 +31,7 @@
                     <a class="nav-link" href="{{ '/' }}">Home</a>
                 </li>
                 {% endif %}
-                {% if is_granted("ROLE_ADMIN") or is_granted('ROLE_BALIE') or is_granted('ROLE_USER') %}
+                {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_BALIE") or is_granted("ROLE_USER") %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ '/product' }}">Producten</a>
                 </li>
@@ -58,7 +58,7 @@
                 {% endif %}
                 {% if app.user %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ '/logoff' }}">Loguit</a>
+                        <a class="nav-link" href="{{ '/logout' }}">Loguit</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
