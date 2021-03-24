@@ -26,24 +26,48 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                {% if is_granted("ROLE_ADMIN") or is_granted('ROLE_BALIE') or is_granted('ROLE_BOEKHOUDING') or is_granted('ROLE_GAST') or is_granted('ROLE_USER') %}
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ '/' }}">Home</a>
                 </li>
+                {% endif %}
+                {% if is_granted("ROLE_ADMIN") or is_granted('ROLE_BALIE') or is_granted('ROLE_USER') %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ '/product' }}">Producten</a>
                 </li>
-                {% if app.user %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ '/loguit' }}">Loguit</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ '/login' }}">Login</a>
+                {% endif %}
+                {% if is_granted("ROLE_ADMIN") or is_granted('ROLE_BOEKHOUDING')  %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ '/rapport' }}">Rapporten</a>
                 </li>
                 {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ '/register' }}">Register</a>
+                {% if is_granted("ROLE_ADMIN") or is_granted('ROLE_BALIE') or is_granted('ROLE_BOEKHOUDING')  %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ '/factuur' }}">Factuur</a>
                 </li>
+                {% endif %}
+                {% if is_granted("ROLE_ADMIN") %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ '/admin' }}">Admin</a>
+                </li>
+                {% endif %}
+                {% if is_granted("ROLE_ADMIN") or is_granted('ROLE_BALIE') or is_granted('ROLE_BOEKHOUDING') or is_granted('ROLE_GAST') or is_granted('ROLE_USER') %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ '/contact' }}">Contact</a>
+                    </li>
+                {% endif %}
+                {% if app.user %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ '/logoff' }}">Loguit</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ '/login' }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ '/register' }}">Register</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
